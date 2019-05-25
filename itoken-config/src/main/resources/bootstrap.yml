@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: itoken-config
+  #SpringBootAdmin是一个SpringBoot项目的监控应用,比如监控健康状况等
+  #把分布式配置中心加进admin监控系统中，这样才能被admin监控
+  boot:
+    admin:
+      client:
+        url: http://localhost:8084
+  #分布式配置中心：在github上统一管理各个服务的yml配置文件
+  cloud:
+    config:
+      label: master
+      server:
+        git:
+          uri: http://192.168.75.128/itoken/itoken-config-respo.git
+          search-paths: respo
+          username: topsale@vip.qq.com
+          password: 12345678
+  #把分布式配置中心加进追踪系统当中，才能被zipkin追踪
+  zipkin:
+    base-url: http://localhost:9411
+
+server:
+  port: 8888
+#把分布式配置中心加进euraka注册中心，这样才能被注册
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+

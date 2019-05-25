@@ -13,10 +13,10 @@ spring:
       label: master
       server:
         git:
-          uri: http://192.168.75.128/itoken/itoken-config-respo.git
-          search-paths: respo
-          username: topsale@vip.qq.com
-          password: 12345678
+          uri: https://github.com/474711911/itoken.git
+          search-paths: itoken-config-respo
+          username: 474711911
+          password: wg474711911@126.com
   #把分布式配置中心加进追踪系统当中，才能被zipkin追踪
   zipkin:
     base-url: http://localhost:9411
